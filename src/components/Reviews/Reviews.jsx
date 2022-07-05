@@ -10,7 +10,7 @@ import Loader from 'components/Loader/Loader';
 
 const Reviews = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
   const [reviews, setReviews] = useState(null);
   // ?  const { results, total_pages } = reviews;
   const page = 1;
@@ -26,7 +26,8 @@ const Reviews = () => {
         setReviews(reviewsData);
         setIsLoading(false);
       } catch (error) {
-        setError(true);
+        // setError(true);
+        console.log(error);
         setIsLoading(false);
       }
     }

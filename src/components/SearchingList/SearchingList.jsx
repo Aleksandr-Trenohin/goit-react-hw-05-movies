@@ -5,7 +5,8 @@ import { useLocation } from 'react-router-dom';
 import { Item, LinkStyled, List } from './SearchingList.styled';
 
 const SearchingList = ({ searchingMovies }) => {
-  const { results, page, total_pages } = searchingMovies;
+  const { results } = searchingMovies;
+  // ? page, total_pages
 
   const location = useLocation();
 

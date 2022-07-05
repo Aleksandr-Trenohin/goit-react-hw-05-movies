@@ -10,7 +10,7 @@ import Loader from 'components/Loader/Loader';
 
 const Cast = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(false);
+  // const [error, setError] = useState(false);
   const [cast, setCast] = useState(null);
 
   const { id } = useParams();
@@ -24,7 +24,8 @@ const Cast = () => {
         setCast(castData.cast);
         setIsLoading(false);
       } catch (error) {
-        setError(true);
+        // setError(true);
+        console.log(error);
         setIsLoading(false);
       }
     }
