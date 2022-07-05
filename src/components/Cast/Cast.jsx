@@ -22,10 +22,10 @@ const Cast = () => {
         const castData = await API.getMovieCast(id);
 
         setCast(castData.cast);
-        setIsLoading(false);
       } catch (error) {
         // setError(true);
         console.log(error);
+      } finally {
         setIsLoading(false);
       }
     }

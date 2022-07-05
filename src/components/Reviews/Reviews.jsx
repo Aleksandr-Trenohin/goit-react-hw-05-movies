@@ -24,10 +24,10 @@ const Reviews = () => {
         const reviewsData = await API.getMovieReviews(id, page);
 
         setReviews(reviewsData);
-        setIsLoading(false);
       } catch (error) {
         // setError(true);
         console.log(error);
+      } finally {
         setIsLoading(false);
       }
     }

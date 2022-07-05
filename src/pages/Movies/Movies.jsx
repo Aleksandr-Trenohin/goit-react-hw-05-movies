@@ -30,9 +30,9 @@ const Movies = () => {
           const searchingMoviesData = await API.getQueryMovies(query, page);
 
           setSearchingMovies(searchingMoviesData);
-          setIsLoading(false);
         } catch (error) {
           setError(true);
+        } finally {
           setIsLoading(false);
         }
       }

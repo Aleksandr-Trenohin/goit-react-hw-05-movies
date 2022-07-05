@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import { useLocation } from 'react-router-dom';
+
 import { Item, LinkStyled, List } from './TrendingList.styled';
 
 import * as API from 'service/Api';
@@ -13,6 +15,8 @@ const TrendingList = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   // ? const { results, page, total_pages } = trendingMovies;
 
+  const location = useLocation();
+
   useEffect(() => {
     async function fetchTrendingMovies() {
       try {
@@ -20,9 +24,9 @@ const TrendingList = () => {
         const trendingMoviesData = await API.getTrendingMovies();
 
         setTrendingMovies(trendingMoviesData.results);
-        setIsLoading(false);
       } catch (error) {
         setError(true);
+      } finally {
         setIsLoading(false);
       }
     }
@@ -37,7 +41,9 @@ const TrendingList = () => {
       ) : (
         trendingMovies.map(({ title, id }) => (
           <Item key={id}>
-            <LinkStyled to={`/movies/${id}`}>{title}</LinkStyled>
+            <LinkStyled to={`/movies/${id}`} state={{ from: location }}>
+              {title}
+            </LinkStyled>
           </Item>
         ))
       )}

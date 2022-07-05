@@ -28,7 +28,7 @@ const MovieCard = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
 
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from ?? '/movies';
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -40,9 +40,9 @@ const MovieCard = () => {
         const movieData = await API.getMovieDetails(id);
 
         setSelectedMovie(movieData);
-        setIsLoading(false);
       } catch (error) {
         setError(true);
+      } finally {
         setIsLoading(false);
       }
     }
