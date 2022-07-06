@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Btn = styled.button`
+  font-size: 14px;
+  height: 33px;
   border-radius: 5px;
-  padding: 3px 7px;
+  padding: 3px 13px;
   border: 1px solid #d1cccc;
   background-color: #fff;
   &:hover,

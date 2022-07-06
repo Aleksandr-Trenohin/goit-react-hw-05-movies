@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import { Img, Item, List, Text, Message } from './Cast.styled';
+import { Img, Item, List, Text, Message, Wrap } from './Cast.styled';
 
 import * as API from 'service/Api';
 
@@ -14,6 +14,10 @@ const Cast = () => {
   const [cast, setCast] = useState(null);
 
   const { id } = useParams();
+
+  const baseImgUrl = 'https://image.tmdb.org/t/p/w500';
+  const defaultImg =
+    'https://www.pngkey.com/png/full/121-1219231_user-default-profile.png';
 
   useEffect(() => {
     async function fetchMovieCast() {
@@ -45,11 +49,17 @@ const Cast = () => {
           .map(({ cast_id, profile_path, original_name, character }) => (
             <Item key={cast_id}>
               <Img
-                src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                src={
+                  profile_path
+                    ? `${baseImgUrl}${profile_path}`
+                    : `${defaultImg}`
+                }
                 alt="profile portrait"
               />
-              <Text>{original_name}</Text>
-              <Text>Character: {character}</Text>
+              <Wrap>
+                <Text>{original_name}</Text>
+                <Text>Character: {character}</Text>
+              </Wrap>
             </Item>
           ))}
     </List>
